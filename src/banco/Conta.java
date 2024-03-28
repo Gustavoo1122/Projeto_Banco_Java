@@ -7,21 +7,35 @@ public class Conta {
 	public static void main(String[] args) {
 		String nomeTitular, nrConta;
 		double saldo = 0;
-		boolean saldoValido = false;
+		boolean nomeValido = false, saldoValido = false;
 		
 		Scanner sc = new Scanner(System.in);
 		Operacoes op = new Operacoes();
 		Menu me = new Menu();
 		
 		System.out.println("Digite o nome do Titular:");
-		nomeTitular = sc.nextLine();
+		
+		while(!nomeValido) {
+			nomeTitular = sc.nextLine();
+			if(nomeTitular.matches("[a-zA-Z]+")) {
+				op.setTitular(nomeTitular);
+				nomeValido = true;
+			}
+			else {
+				System.out.println("Por favor, digite somente letras.");
+			}
+		}
+		
 		System.out.println("Digite o número da conta:");
 		nrConta = sc.nextLine();
+		op.setNrConta(nrConta);
 		
 		while(!saldoValido) {
 			try {
 				System.out.println("Digite o saldo da conta:");
 				saldo = sc.nextDouble();
+				op.setSaldo(saldo);
+				
 				saldoValido = true;
 			} catch (InputMismatchException e) {
 				System.out.println("Por favor, digite somente números.");
@@ -29,8 +43,6 @@ public class Conta {
 			}
 			
 		}
-		
-		op.setInfo(nomeTitular, nrConta, saldo);
 		
 		op.mostraInfo();
 		boolean continuar = true;

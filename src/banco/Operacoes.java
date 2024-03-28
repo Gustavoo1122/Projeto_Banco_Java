@@ -4,12 +4,40 @@ public class Operacoes {
 	private String titular, nrConta;
 	private double saldo;
 	
-	public void setInfo(String titular, String nrConta, double saldo) {
+	public Operacoes() {
+		
+	}
+	
+	public Operacoes(String titular, String nrConta, double saldo) {
 		this.titular = titular;
 		this.nrConta = nrConta;
 		this.saldo = saldo;
 	}
 	
+	public String getTitular() {
+		return titular;
+	}
+
+	public void setTitular(String titular) {
+		this.titular = titular;
+	}
+
+	public String getNrConta() {
+		return nrConta;
+	}
+
+	public void setNrConta(String nrConta) {
+		this.nrConta = nrConta;
+	}
+
+	public double getSaldo() {
+		return saldo;
+	}
+
+	public void setSaldo(double saldo) {
+		this.saldo = saldo;
+	}
+
 	//Método para depósitos
 	public void deposito(double valor) {
 		
@@ -67,9 +95,9 @@ public class Operacoes {
 	public void mostraInfo() {
 		System.out.println("-----------EXTRATO-----------");
 		System.out.println("-----------------------------");
-		System.out.println("Titular conta: "+titular);
-		System.out.println("Número da conta: "+nrConta);
-		System.out.println("Saldo da conta: R$"+saldo);
+		System.out.println("Titular conta: "+getTitular());
+		System.out.println("Número da conta: "+getNrConta());
+		System.out.println("Saldo da conta: R$"+getSaldo());
 		System.out.println("-----------------------------");
 	}
 }
